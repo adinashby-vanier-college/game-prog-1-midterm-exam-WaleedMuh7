@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Pig
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Pig\ here.\r\n\ @author\ (your\ name)\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Pig\ wants\ to\ do.\ This\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ moveAndTurn()
+comment2.text=\r\n\ This\ method\ allows\ te\ player\ to\ move\ the\ pig,\ with\ the\ arrowkeys.\r\n
+comment3.params=
+comment3.target=void\ eat()
+comment3.text=\r\n\ This\ method\ allows\ the\ pig\ to\ eat\ the\ burgers\ that\ intersct's\ with\ it\ .\r\n
+comment4.params=
+comment4.target=boolean\ isGameWon()
+comment4.text=\r\n\ This\ method\ allows\ the\ computer\ to\ verify\ if\ the\ game\ is\ won\ or\ not\ .\r\n
+comment5.params=
+comment5.target=void\ transitionToGameWonWorld()
+comment5.text=\r\n\ This\ allows\ the\ transition\ to\ the\ game\ won\ world.\r\n
+numComments=6

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Snake
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Snake\ here.\r\n\ @author\ (your\ name)\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Snake\ wants\ to\ do.\ This\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ moveAround()
+comment2.text=\r\n\ This\ method\ allows\ the\ snake\ to\ move\ randomly\ by\ itself\ and\ at\ the\ edge\ of\ the\ world\ it\ turns\ so\ it\ does\ not\ et\ stuck.\r\n
+comment3.params=
+comment3.target=void\ eat()
+comment3.text=\r\n\ This\ method\ allows\ the\ snake\ to\ eat\ the\ pig\ whan\ it\ catches\ it,\r\n
+comment4.params=
+comment4.target=boolean\ isGameLost()
+comment4.text=\r\n\ \r\n
+comment5.params=
+comment5.target=void\ transitionToGameLostWorld()
+comment5.text=\r\n\ \r\n
+numComments=6

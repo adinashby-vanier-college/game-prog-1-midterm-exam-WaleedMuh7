@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Snake" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve">Write a description of class Snake here.
+@author (your name) @version (a version number or a date)</javadoc>
+    <imports>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors/>
+    <methods>
+        <comment xml:space="preserve">(World, Actor, GreenfootImage, Greenfoot and MouseInfo)</comment>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Snake wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="moveAround()" expression-java="moveAround()" enable="true"/>
+                <call expression="eat()" expression-java="eat()" enable="true"/>
+                <if condition="isGameLost()" condition-java="isGameLost()" enable="true">
+                    <ifStatements>
+                        <call expression="transitionToGameLostWorld()" expression-java="transitionToGameLostWorld()" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;lose.wav&quot;)" expression-java="Greenfoot.playSound(&quot;lose.wav&quot;)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="moveAround" enable="true">
+            <javadoc xml:space="preserve">This method allows the snake to move randomly by itself and at the edge of the world it turns so it does not et stuck.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="move(4)" expression-java="move(4)" enable="true"/>
+                <if condition="Greenfoot.getRandomNumber(10)==1" condition-java="Greenfoot.getRandomNumber(10) == 1" enable="true">
+                    <ifStatements>
+                        <call expression="turn(Greenfoot.getRandomNumber(359))" expression-java="turn(Greenfoot.getRandomNumber(359))" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="isAtEdge()" condition-java="isAtEdge()" enable="true">
+                    <ifStatements>
+                        <call expression="turn(180)" expression-java="turn(180)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="eat" enable="true">
+            <javadoc xml:space="preserve">This method allows the snake to eat the pig whan it catches it,</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="Actor" type-java="Actor" name="pig" value="getOneIntersectingObject(Pig.class)" value-java="getOneIntersectingObject(Pig.class)" enable="true"/>
+                <if condition="pig!=null" condition-java="pig != null" enable="true">
+                    <ifStatements>
+                        <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                        <call expression="world.removeObject(pig)" expression-java="world.removeObject(pig)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="boolean" type-java="boolean" name="isGameLost" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                <if condition="world.getObjects(Pig.class).isEmpty()" condition-java="world.getObjects(Pig.class).isEmpty()" enable="true">
+                    <ifStatements>
+                        <return value="true" value-java="true" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <return value="false" value-java="false" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="transitionToGameLostWorld" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="gameLostWorld" value="new GameLostWorld()" value-java=" new GameLostWorld()" enable="true"/>
+                <call expression="Greenfoot.setWorld(gameLostWorld)" expression-java="Greenfoot.setWorld(gameLostWorld)" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>

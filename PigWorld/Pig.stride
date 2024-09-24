@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Pig" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve">Write a description of class Pig here.
+@author (your name) @version (a version number or a date)</javadoc>
+    <imports>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors/>
+    <methods>
+        <comment xml:space="preserve">(World, Actor, GreenfootImage, Greenfoot and MouseInfo)</comment>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Pig wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="moveAndTurn()" expression-java="moveAndTurn()" enable="true"/>
+                <call expression="eat()" expression-java="eat()" enable="true"/>
+                <if condition="isGameWon()" condition-java="isGameWon()" enable="true">
+                    <ifStatements>
+                        <call expression="transitionToGameWonWorld()" expression-java="transitionToGameWonWorld()" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;win.wav&quot;)" expression-java="Greenfoot.playSound(&quot;win.wav&quot;)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="moveAndTurn" enable="true">
+            <javadoc xml:space="preserve">This method allows te player to move the pig, with the arrowkeys.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="move(0)" expression-java="move(0)" enable="true"/>
+                <if condition="Greenfoot.isKeyDown(&quot;left&quot;)" condition-java="Greenfoot.isKeyDown(&quot;left&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="move(-3)" expression-java="move(-3)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;right&quot;)" condition-java="Greenfoot.isKeyDown(&quot;right&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="move(3)" expression-java="move(3)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;up&quot;)" condition-java="Greenfoot.isKeyDown(&quot;up&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(-3)" expression-java="turn(-3)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;down&quot;)" condition-java="Greenfoot.isKeyDown(&quot;down&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(3)" expression-java="turn(3)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="eat" enable="true">
+            <javadoc xml:space="preserve">This method allows the pig to eat the burgers that intersct's with it .</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="Actor" type-java="Actor" name="burger" value="getOneIntersectingObject(Burger.class)" value-java="getOneIntersectingObject(Burger.class)" enable="true"/>
+                <if condition="burger!=null" condition-java="burger != null" enable="true">
+                    <ifStatements>
+                        <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                        <call expression="world.removeObject(burger)" expression-java="world.removeObject(burger)" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;eating.wav&quot;)" expression-java="Greenfoot.playSound(&quot;eating.wav&quot;)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="boolean" type-java="boolean" name="isGameWon" enable="true">
+            <javadoc xml:space="preserve">This method allows the computer to verify if the game is won or not .</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                <if condition="world.getObjects(Burger.class).isEmpty()" condition-java="world.getObjects(Burger.class).isEmpty()" enable="true">
+                    <ifStatements>
+                        <return value="true" value-java="true" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <return value="false" value-java="false" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="transitionToGameWonWorld" enable="true">
+            <javadoc xml:space="preserve">This allows the transition to the game won world.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="gameWonWorld" value="new GameWonWorld()" value-java=" new GameWonWorld()" enable="true"/>
+                <call expression="Greenfoot.setWorld(gameWonWorld)" expression-java="Greenfoot.setWorld(gameWonWorld)" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>
